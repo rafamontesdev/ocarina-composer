@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compositor de Ocarina</title>
+  <meta name="description" content="Compón con un piano y obtén partituras con los botones de la ocarina de Ocarina of Time (Switch 2).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;600;700&family=Noto+Music&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button id="toggleLibrary" class="icon-btn lib-toggle" aria-label="Mis partituras" title="Mis partituras">☰</button>
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 64 40" aria-hidden="true">
+        <ellipse cx="30" cy="22" rx="26" ry="15" fill="currentColor" opacity=".9"/>
+        <rect x="50" y="6" width="9" height="12" rx="3" fill="currentColor" transform="rotate(30 54 12)"/>
+        <circle cx="18" cy="20" r="3" fill="#1b2a25"/><circle cx="28" cy="17" r="3" fill="#1b2a25"/>
+        <circle cx="38" cy="19" r="3" fill="#1b2a25"/><circle cx="26" cy="28" r="2.4" fill="#1b2a25"/>
+      </svg>
+      <div>
+        <h1>Compositor de Ocarina</h1>
+        <p>Compón con el piano · partitura con botones para <em>Ocarina of Time</em> (Switch 2)</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside id="library" class="library" aria-label="Mis partituras">
+      <div class="lib-head">
+        <h2>Mis partituras</h2>
+        <button id="newScore" class="btn primary small">+ Nueva</button>
+      </div>
+      <p class="lib-note">Se guardan automáticamente en este navegador.</p>
+      <ul id="scoreList" class="score-list"></ul>
+      <div class="lib-foot">
+        <button id="exportJson" class="btn small">⬇ Copia de seguridad</button>
+        <label class="btn small">⬆ Importar<input type="file" id="importJson" accept=".json,application/json" hidden></label>
+      </div>
+    </aside>
+    <div id="libScrim" class="scrim" hidden></div>
+
+    <main class="main">
+      <section class="toolbar">
+        <div class="field grow">
+          <label for="title">Título</label>
+          <input id="title" type="text" maxlength="80" placeholder="Mi canción">
+        </div>
+        <div class="field">
+          <label for="tempo">Tempo ♩</label>
+          <input id="tempo" type="number" min="30" max="300" step="1">
+        </div>
+        <div class="field">
+          <label for="timeSig">Compás</label>
+          <select id="timeSig">
+            <option value="4/4">4/4</option>
+            <option value="3/4">3/4</option>
+            <option value="2/4">2/4</option>
+            <option value="6/8">6/8</option>
+            <option value="free">Libre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <span class="label">Nomenclatura</span>
+          <div class="seg" data-setting="naming" role="group" aria-label="Nomenclatura">
+            <button data-value="solfege">Do Re Mi</button>
+            <button data-value="letters">C D E</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">Alteraciones</span>
+          <div class="seg" data-setting="acc" role="group" aria-label="Alteraciones">
+            <button data-value="sharp">♯</button>
+            <button data-value="flat">♭</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label">Preferir</span>
+          <div class="seg" data-setting="method" role="group" aria-label="Método preferido">
+            <button data-value="stick" title="Usar el stick izquierdo (⇧ ⇩) cuando sea posible">Stick ⇧⇩</button>
+            <button data-value="dpad" title="Usar la cruceta (↑ ↓) cuando sea posible">Cruceta ↑↓</button>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="showOctave"> Octava</label>
+      </section>
+
+      <section class="actions">
+        <button id="playBtn" class="btn primary"><span class="play-ico">▶</span> <span class="play-txt">Reproducir</span></button>
+        <div class="spacer"></div>
+        <button id="pdfBtn" class="btn">⬇ PDF</button>
+        <button id="pngBtn" class="btn">⬇ Imagen</button>
+        <button id="txtBtn" class="btn">⧉ Copiar texto</button>
+      </section>
+
+      <section class="score-wrap" id="scoreWrap">
+        <canvas id="scoreCanvas" aria-label="Partitura"></canvas>
+      </section>
+
+      <section class="dock">
+        <div class="editor">
+          <div class="group" role="group" aria-label="Duración">
+            <button class="dur" data-dur="w" title="Redonda (1)"><span class="nglyph">𝅝</span><kbd>1</kbd></button>
+            <button class="dur" data-dur="h" title="Blanca (2)"><span class="nglyph">𝅗𝅥</span><kbd>2</kbd></button>
+            <button class="dur" data-dur="q" title="Negra (3)"><span class="nglyph">♩</span><kbd>3</kbd></button>
+            <button class="dur" data-dur="e" title="Corchea (4)"><span class="nglyph">♪</span><kbd>4</kbd></button>
+            <button class="dur" data-dur="s" title="Semicorchea (5)"><span class="nglyph">𝅘𝅥𝅯</span><kbd>5</kbd></button>
+            <button id="dotBtn" class="dur" title="Puntillo (.)"><span class="nglyph">•</span><kbd>.</kbd></button>
+          </div>
+          <div class="group">
+            <button id="restBtn" class="btn small" title="Añadir silencio (R)">Silencio <kbd>R</kbd></button>
+            <button id="barBtn" class="btn small" title="Barra de compás (B)">Barra │ <kbd>B</kbd></button>
+            <button id="delBtn" class="btn small" title="Borrar nota seleccionada (Retroceso)">⌫ Borrar</button>
+            <button id="undoBtn" class="btn small" title="Deshacer (Ctrl+Z)">↶</button>
+            <button id="redoBtn" class="btn small" title="Rehacer (Ctrl+Y)">↷</button>
+          </div>
+          <div class="group" role="group" aria-label="Transportar">
+            <span class="mini-label">Transportar</span>
+            <button class="btn small" data-tr="-12" title="Bajar una octava">−8ª</button>
+            <button class="btn small" data-tr="-1" title="Bajar medio tono">−½</button>
+            <button class="btn small" data-tr="1" title="Subir medio tono">+½</button>
+            <button class="btn small" data-tr="12" title="Subir una octava">+8ª</button>
+          </div>
+          <div class="group">
+            <button id="midiBtn" class="btn small" title="Usar un teclado MIDI conectado">🎹 MIDI</button>
+          </div>
+        </div>
+        <div id="selInfo" class="sel-info"></div>
+        <div class="piano-wrap">
+          <div id="piano" class="piano" aria-label="Piano"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/notes.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
