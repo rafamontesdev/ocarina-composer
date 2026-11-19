@@ -248,3 +248,13 @@ label.btn { cursor: pointer; }
 }
 
 .score-item .icon-btn.del.confirm { width: auto; padding: 0 8px; font-size: 12px; font-weight: 700; opacity: 1; background: #b8432f; color: #fff; }
+
+.about-link { margin-left: auto; color: var(--muted); font-weight: 600; font-size: 13px; text-decoration: none; padding: 6px 10px; border-radius: 8px; white-space: nowrap; }
+.about-link:hover { color: var(--gold); background: rgba(255,255,255,.06); }
+@media (max-width: 640px) {
+  .brand { min-width: 0; flex: 1; }
+  .brand h1 { font-size: 16px; }
+  .logo { width: 36px; height: 24px; }
+  .about-extra { display: none; }
+  .about-link { flex: none; padding: 6px 4px; }
+}
