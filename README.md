@@ -4,30 +4,32 @@ Aplicación web para componer melodías con un piano y convertirlas en partitura
 
 Hecha solo con HTML, CSS y JavaScript: no necesita instalación ni servidor. Abre `index.html` en el navegador o publícala en GitHub Pages.
 
+Esta misma información (autor, licencia y aviso legal) está en la página `acerca.html`, enlazada desde la cabecera de la aplicación.
+
 ## Funciones
 
-- Compón con el piano en pantalla, el teclado del ordenador (A W S E D F T G Y H U J K O L P Ñ) o un teclado MIDI.
-- Partitura en pentagrama con el nombre de cada nota y los botones del mando que la tocan.
-- Nomenclatura Do Re Mi o C D E, sostenidos o bemoles, y preferencia por stick (⇧ ⇩) o cruceta (↑ ↓).
-- Reproducción con sonido de ocarina, transporte de tono y deshacer/rehacer.
-- Las partituras se guardan automáticamente en el navegador. Se pueden descargar en PDF, imagen PNG o texto, y hacer copias de seguridad en JSON.
+* Compón con el piano en pantalla, el teclado del ordenador (A W S E D F T G Y H U J K O L P Ñ) o un teclado MIDI.
+* Partitura en pentagrama con el nombre de cada nota y los botones del mando que la tocan.
+* Nomenclatura Do Re Mi o C D E, sostenidos o bemoles, y preferencia por stick (⇧ ⇩) o cruceta (↑ ↓).
+* Reproducción con sonido de ocarina, transporte de tono y deshacer/rehacer.
+* Las partituras se guardan automáticamente en el navegador. Se pueden descargar en PDF, imagen PNG o texto, y hacer copias de seguridad en JSON.
 
 ### Atajos de teclado
 
-| Tecla | Acción |
-| --- | --- |
-| 1 – 5 | Redonda, blanca, negra, corchea, semicorchea |
-| `.` | Puntillo |
-| R | Silencio |
-| B | Barra de compás |
-| Retroceso | Borrar la nota seleccionada |
-| ← → | Moverse por la partitura |
-| Espacio | Reproducir / parar |
-| Ctrl+Z / Ctrl+Y | Deshacer / rehacer |
+|Tecla|Acción|
+|-|-|
+|1 – 5|Redonda, blanca, negra, corchea, semicorchea|
+|`.`|Puntillo|
+|R|Silencio|
+|B|Barra de compás|
+|Retroceso|Borrar la nota seleccionada|
+|← →|Moverse por la partitura|
+|Espacio|Reproducir / parar|
+|Ctrl+Z / Ctrl+Y|Deshacer / rehacer|
 
 ## Autor
 
-**Rafael Emilio Montes Jiménez**, con la ayuda de Claude (asistente de IA de Anthropic).
+**Rafael Montes Jiménez**, con la ayuda de Claude (asistente de IA de Anthropic).
 
 ## Licencia
 
@@ -44,9 +46,9 @@ El software se ofrece **tal cual**, sin garantía de ningún tipo. El autor no s
 
 ### Créditos de terceros
 
-- La tabla de correspondencia entre notas y botones se basa en [nintenxu/ocarina-of-time-note-chart](https://github.com/nintenxu/ocarina-of-time-note-chart), publicada bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Esa parte conserva su licencia original y su atribución.
-- Fuentes Cinzel, Inter y Noto Music de [Google Fonts](https://fonts.google.com/), bajo licencia SIL Open Font License.
-- La melodía de ejemplo, *Himno de la Alegría* (Ludwig van Beethoven), es de dominio público.
+* La tabla de correspondencia entre notas y botones se basa en [nintenxu/ocarina-of-time-note-chart](https://github.com/nintenxu/ocarina-of-time-note-chart), publicada bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Esa parte conserva su licencia original y su atribución.
+* Fuentes Cinzel, Inter y Noto Music de [Google Fonts](https://fonts.google.com/), bajo licencia SIL Open Font License.
+* La melodía de ejemplo, *Himno de la Alegría* (Ludwig van Beethoven), es de dominio público.
 
 ## Aviso legal
 
@@ -59,3 +61,4 @@ Este es un proyecto **no oficial**, creado por un aficionado, sin ánimo de lucr
 Este proyecto no incluye ni distribuye ningún recurso del juego: ni gráficos, ni sonidos, ni música, ni código. Los iconos de botones, el sonido de ocarina y el resto de elementos visuales se generan desde cero en el propio código.
 
 Cualquier otra marca citada pertenece a sus respectivos propietarios.
+

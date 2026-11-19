@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acerca del Compositor de Ocarina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; --bg: #13201c; --panel: #20352f; --line: #355047; --text: #ecf2ea; --muted: #a7b9ae; --gold: #e2b850; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+    a { color: var(--gold); }
+    .back { display: inline-block; margin-bottom: 20px; font-weight: 600; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+    h1, h2, h3 { font-family: "Cinzel", Georgia, serif; color: var(--gold); line-height: 1.2; text-wrap: balance; }
+    h1 { font-size: 30px; margin: 0 0 12px; }
+    h2 { font-size: 20px; margin: 36px 0 10px; padding-top: 18px; border-top: 1px solid var(--line); }
+    h3 { font-size: 16px; margin: 24px 0 8px; }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+    table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+    th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+    kbd { font: 600 12px/1 "Inter", sans-serif; padding: 3px 6px; border-radius: 5px; background: var(--panel); border: 1px solid var(--line); }
+    blockquote { margin: 12px 0; padding: 12px 16px; background: var(--panel); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13.5px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← Volver al compositor</a>
+
+  <h1>Compositor de Ocarina</h1>
+  <p>Aplicación web para componer melodías con un piano y convertirlas en partituras con los botones de la ocarina de <em>The Legend of Zelda: Ocarina of Time</em> en Nintendo Switch 2.</p>
+  <p class="muted">Hecha solo con HTML, CSS y JavaScript: no necesita instalación ni servidor.</p>
+
+  <h2>Funciones</h2>
+  <ul>
+    <li>Compón con el piano en pantalla, el teclado del ordenador (A W S E D F T G Y H U J K O L P Ñ) o un teclado MIDI.</li>
+    <li>Partitura en pentagrama con el nombre de cada nota y los botones del mando que la tocan.</li>
+    <li>Nomenclatura Do Re Mi o C D E, sostenidos o bemoles, y preferencia por stick (⇧ ⇩) o cruceta (↑ ↓).</li>
+    <li>Reproducción con sonido de ocarina, transporte de tono y deshacer/rehacer.</li>
+    <li>Las partituras se guardan automáticamente en el navegador. Se pueden descargar en PDF, imagen PNG o texto, y hacer copias de seguridad en JSON.</li>
+  </ul>
+
+  <h3>Atajos de teclado</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tecla</th><th>Acción</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>1</kbd> – <kbd>5</kbd></td><td>Redonda, blanca, negra, corchea, semicorchea</td></tr>
+        <tr><td><kbd>.</kbd></td><td>Puntillo</td></tr>
+        <tr><td><kbd>R</kbd></td><td>Silencio</td></tr>
+        <tr><td><kbd>B</kbd></td><td>Barra de compás</td></tr>
+        <tr><td><kbd>Retroceso</kbd></td><td>Borrar la nota seleccionada</td></tr>
+        <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Moverse por la partitura</td></tr>
+        <tr><td><kbd>Espacio</kbd></td><td>Reproducir / parar</td></tr>
+        <tr><td><kbd>Ctrl+Z</kbd> / <kbd>Ctrl+Y</kbd></td><td>Deshacer / rehacer</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Autor</h2>
+  <p><strong>Rafael Montes Jiménez</strong>, con la ayuda de Claude (asistente de IA de Anthropic).</p>
+
+  <h2>Licencia</h2>
+  <p>El código de este proyecto es de uso libre bajo la licencia <strong>Beerware</strong> (revisión 42):</p>
+  <blockquote>"THE BEER-WARE LICENSE" (Revision 42):<br>
+  Rafael Emilio Montes Jiménez wrote this file. As long as you retain this notice you can do whatever you want with this stuff. If we meet some day, and you think this stuff is worth it, you can buy me a beer in return.</blockquote>
+  <p>En español: puedes hacer lo que quieras con este código siempre que conserves este aviso. Si algún día nos encontramos y crees que ha merecido la pena, puedes invitarme a una cerveza.</p>
+  <p>El software se ofrece <strong>tal cual</strong>, sin garantía de ningún tipo. El autor no se hace responsable de ningún daño o problema derivado de su uso.</p>
+
+  <h3>Créditos de terceros</h3>
+  <ul>
+    <li>La tabla de correspondencia entre notas y botones se basa en <a href="https://github.com/nintenxu/ocarina-of-time-note-chart" target="_blank" rel="noopener">nintenxu/ocarina-of-time-note-chart</a>, publicada bajo licencia <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Esa parte conserva su licencia original y su atribución.</li>
+    <li>Fuentes Cinzel, Inter y Noto Music de <a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a>, bajo licencia SIL Open Font License.</li>
+    <li>La melodía de ejemplo, <em>Himno de la Alegría</em> (Ludwig van Beethoven), es de dominio público.</li>
+  </ul>
+
+  <h2>Aviso legal</h2>
+  <p>Este es un proyecto <strong>no oficial</strong>, creado por un aficionado, sin ánimo de lucro y con fines educativos y de entretenimiento.</p>
+  <p><strong>Este proyecto no está afiliado, asociado, autorizado, patrocinado ni respaldado de ninguna forma por Nintendo Co., Ltd., Nintendo of America Inc., Nintendo of Europe GmbH ni ninguna de sus filiales.</strong> El autor no tiene ninguna relación con Nintendo.</p>
+  <p><em>Nintendo</em>, <em>Nintendo Switch</em>, <em>Nintendo Switch 2</em>, <em>The Legend of Zelda</em>, <em>Ocarina of Time</em> y todos los nombres, personajes y elementos relacionados son marcas comerciales o marcas registradas de Nintendo. Todos los derechos sobre ellos pertenecen a sus respectivos propietarios. Se mencionan aquí únicamente con fines descriptivos, para indicar con qué juego es compatible la herramienta.</p>
+  <p>Este proyecto no incluye ni distribuye ningún recurso del juego: ni gráficos, ni sonidos, ni música, ni código. Los iconos de botones, el sonido de ocarina y el resto de elementos visuales se generan desde cero en el propio código.</p>
+  <p>Cualquier otra marca citada pertenece a sus respectivos propietarios.</p>
+
+  <p><a class="back" href="index.html">← Volver al compositor</a></p>
+</main>
+</body>
+</html>
